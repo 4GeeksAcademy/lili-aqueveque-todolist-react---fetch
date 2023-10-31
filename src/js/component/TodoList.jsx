@@ -4,6 +4,7 @@ const TodoList = () => {
 
     const [todoInput, settodoInput] = useState('');
     const [todos, setTodos] = useState([]);
+    const [userNameRender, setUserName] = useState('');
 
     const handleInputChange = (e) => {
         settodoInput(e.target.value);
@@ -24,7 +25,7 @@ const TodoList = () => {
 
     return (
         <>
-            <h1 className='text-center'>todos</h1>
+            <h1 className='text-center'>todos by {userNameRender}</h1>
             <div className="note">
                 <ul>
                     <li><input className="inputy" type="text" onChange={handleInputChange} onKeyUp={handleInputKeyPress} value={todoInput} placeholder="What needs to be done?"></input></li>
