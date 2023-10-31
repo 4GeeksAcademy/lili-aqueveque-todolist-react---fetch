@@ -31,8 +31,8 @@ const TodoList = () => {
                 setItemBoolean(true);
                 settodoInput('');
 
-                //const setPutData = await putData();
-                //console.log('Sending Data...', setPutData);
+                const setPutData = await putData();
+                console.log('Sending Data...', setPutData);
             }
         }
 
@@ -51,7 +51,7 @@ const TodoList = () => {
 
 
 
-
+    //POST = add username
     const postData = async () => {
         try {
             let userNameAPI = userNameRender;
@@ -90,6 +90,33 @@ const TodoList = () => {
     }
 
 
+    //PUT = add to-dos
+    const putData = async () => {
+        try {
+            let userNameAPI = userNameRender;
+            let urlAPI = url + userNameAPI;
+            const responsePut = await fetch(urlAPI, {
+                method: 'PUT',
+                headers: {
+                    'Content-type': "application/json"
+                },
+                body: JSON.stringify(todos)
+            });
+
+            if (responsePut.ok) {
+                const jsonResponsePut = await responsePut.json();
+                return jsonResponsePut.msg;
+            }
+            else {
+                throw new Error('PUT request failed')
+            }
+        }
+        catch (error) {
+            console.log('Request of GET failed', error)
+        }
+    }
+
+
 
 
 
@@ -109,7 +136,7 @@ const TodoList = () => {
                     <ul>
                         <li><input className="inputy" type="text" onChange={handleInputChange} onKeyUp={handleInputKeyPress} value={todoInput} placeholder="What needs to be done?"></input></li>
                         {todos.map((todo, index) => (
-                            <li key={index}>{todo}
+                            <li key={index}>{todo.label}
                                 <button className="trash" onClick={() => handleDeleteTodo(index)}><i class="fa-solid fa-trash-can"></i></button>
                             </li>
                         ))}
