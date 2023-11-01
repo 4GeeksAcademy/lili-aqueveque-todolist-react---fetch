@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import InputName from "./InputName";
+import DeleteButton from './DeleteButton';
 
 const TodoList = () => {
 
@@ -153,7 +154,7 @@ const TodoList = () => {
     return (
         !deleting ? (
             !showCardTasks ? (<InputName setShowCardTasks={setShowCardTasks} setUserName={setUserName} postData={postData} />) :
-                <>
+                (<>
                     <h1 className='text-center'>todos by {userNameRender}</h1>
                     <div className="note">
                         <ul>
@@ -164,8 +165,10 @@ const TodoList = () => {
                                 </li>
                             ))}
                         </ul>
+                        <DeleteButton deleteTodo={deleteTodo} setTodos={setTodos} setShowCardTasks={setShowCardTasks} setDeleting={setDeleting} setItemBoolean={setItemBoolean} />
                     </div>
-                </>) : (<div className="deletingRender">Deleting todos and user, please wait...</div>)
+                </>))
+            : (<div className="deletingRender">Deleting todos and user, please wait...</div>)
     )
 }
 

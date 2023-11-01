@@ -1,16 +1,16 @@
 import React from 'react'
 
-const DeleteButton = ({ deleteTask, setTodos, setShowCardTasks, setUserName, setItemBoolean, settodoInput, setDeleting }) => {
+const DeleteButton = ({ deleteTodo, setTodos, setShowCardTasks, setUserName, setItemBoolean, settodoInput, setDeleting }) => {
     const handleDeleteButton = () => {
         setDeleting(true)
         setTimeout(() => {
-            deleteTask() //correcto
-            setDeleting(false) //correcto
-            setItemBoolean(false) //correcto
-            setTodos([]) //correcto
-            setShowCardTasks(false) //correcto
-            settodoInput('') //correcto
-            setUserName('') //correcto
+            deleteTodo(); //correcto
+            setDeleting(false); //correcto
+            setItemBoolean(false); //correcto
+            setTodos([]); //correcto
+            setShowCardTasks(false); //correcto
+            settodoInput(''); //correcto
+            setUserName(''); //correcto
         }, 1500)
 
 
@@ -18,7 +18,7 @@ const DeleteButton = ({ deleteTask, setTodos, setShowCardTasks, setUserName, set
     return (
         <div>
 
-            <button type="button" className="btn btn-success" onClick={handleDeleteButton} style={{
+            <button type="button" className="btn btn-danger" onClick={handleDeleteButton} style={{
                 display: 'block', marginLeft: 'auto', marginRight: 'auto',
                 marginTop: '20px'
 
