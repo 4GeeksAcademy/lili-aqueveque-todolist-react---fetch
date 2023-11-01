@@ -75,3 +75,11 @@ li:hover .trash {
     padding-left: 30px;
     padding-right: 30px;
 }
+
+.deletingRender {
+    text-align: center;
+    margin-top: 200px;
+    font-size: 50px;
+    margin-bottom: 20px;
+    color:#86458b;
+}
