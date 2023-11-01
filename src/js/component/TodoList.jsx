@@ -151,21 +151,21 @@ const TodoList = () => {
     }
 
     return (
-
-        !showCardTasks ? (<InputName setShowCardTasks={setShowCardTasks} setUserName={setUserName} postData={postData} />) :
-            <>
-                <h1 className='text-center'>todos by {userNameRender}</h1>
-                <div className="note">
-                    <ul>
-                        <li><input className="inputy" type="text" onChange={handleInputChange} onKeyUp={handleInputKeyPress} value={todoInput} placeholder="What needs to be done?"></input></li>
-                        {todos.map((todo, index) => (
-                            <li key={index}>{todo.label}
-                                <button className="trash" onClick={() => handleDeleteTodo(index)}><i class="fa-solid fa-trash-can"></i></button>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            </>
+        !deleting ? (
+            !showCardTasks ? (<InputName setShowCardTasks={setShowCardTasks} setUserName={setUserName} postData={postData} />) :
+                <>
+                    <h1 className='text-center'>todos by {userNameRender}</h1>
+                    <div className="note">
+                        <ul>
+                            <li><input className="inputy" type="text" onChange={handleInputChange} onKeyUp={handleInputKeyPress} value={todoInput} placeholder="What needs to be done?"></input></li>
+                            {todos.map((todo, index) => (
+                                <li key={index}>{todo.label}
+                                    <button className="trash" onClick={() => handleDeleteTodo(index)}><i class="fa-solid fa-trash-can"></i></button>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                </>) : (<div className="deletingRender">Deleting todos and user, please wait...</div>)
     )
 }
 
