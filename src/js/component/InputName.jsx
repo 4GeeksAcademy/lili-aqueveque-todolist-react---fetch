@@ -11,15 +11,21 @@ const InputName = ({ setUserName, setShowCardTasks, postData }) => {
 
 
     const handleClickButton = async () => {
-        try {
-            setShowCardTasks(true);
-            setUserName(value);
-            const sendingPost = await postData() //post method to post the username only
-            console.log('Sending Information', sendingPost)
+        if (value !== '') {
+            try {
+                setShowCardTasks(true);
+                setUserName(value);
+                const sendingPost = await postData() //post method to post the username only
+                console.log('Sending Information', sendingPost)
+            }
+            catch (error) {
+                console.log('There is an error', error)
+            }
         }
-        catch (error) {
-            console.log('There is an error', error)
+        else {
+            alert("It has to be a valid Username");
         }
+
     }
 
 
