@@ -47,3 +47,31 @@ li:not(:last-child) {
 li:hover .trash {
     display: inline;
 }
+
+
+.containerInput {
+    text-align: center;
+}
+
+.purple-button {
+    background-color: #86458b;
+    margin-top: 5px;
+    color: white;
+    font-weight: 400;
+}
+
+.input-username {
+    font-size: 20px;
+}
+
+.labelName {
+    margin-top: 50px;
+}
+
+.username-container {
+    background-color: #9f81a3;
+    display: inline-block;
+    padding-bottom: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+}

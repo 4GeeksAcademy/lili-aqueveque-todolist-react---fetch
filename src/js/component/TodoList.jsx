@@ -4,7 +4,7 @@ import DeleteButton from './DeleteButton';
 
 const TodoList = () => {
 
-    const [todoInput, settodoInput] = useState('');
+    const [todoInput, setTodoInput] = useState('');
     const [todos, setTodos] = useState([]);
     const [userNameRender, setUserName] = useState('');
     const [showCardTasks, setShowCardTasks] = useState(false);
@@ -18,7 +18,7 @@ const TodoList = () => {
 
 
     const handleInputChange = (e) => {
-        settodoInput(e.target.value);
+        setTodoInput(e.target.value);
     };
 
     const handleInputKeyPress = async (e) => {
@@ -30,7 +30,7 @@ const TodoList = () => {
                 }
                 setTodos([...todos, obj]);
                 setItemBoolean(true);
-                settodoInput('');
+                setTodoInput('');
 
                 const setPutData = await putData();
                 console.log('Sending Data...', setPutData);
@@ -77,7 +77,7 @@ const TodoList = () => {
                 console.log(jsonResponse);
                 console.log('this user already exists');
                 console.log('You will enter the usernames info if they already have a todo list');
-                //getData();
+                getData();
             }
 
             else {
@@ -144,6 +144,38 @@ const TodoList = () => {
 
 
 
+    //GET
+    const getData = async () => {
+        try {
+            let userNameAPI = userNameRender;
+            let urlAPI = url + userNameAPI;
+            const responseGet = await fetch(urlAPI, {
+                method: 'GET',
+                headers: {
+                    'Content-type': "application/json"
+                },
+            }); //Send request GET to API endpoint
+
+            if (responseGet.ok) { //200-299
+                const jsonResponseGet = await responseGet.json();
+                const label = jsonResponseGet.map(labelResponse => labelResponse);
+                setTodos(label);
+                setItemBoolean(true);
+            }
+
+            else {
+                throw new Error('Request failed GET')
+            }
+        }
+
+        catch (error) {
+            console.log('Request GET failed', error)
+        }
+    }
+
+
+
+
 
     const handleDeleteTodo = (index) => {
         const updateTodos = [...todos];
@@ -165,7 +197,7 @@ const TodoList = () => {
                                 </li>
                             ))}
                         </ul>
-                        <DeleteButton deleteTodo={deleteTodo} setTodos={setTodos} setShowCardTasks={setShowCardTasks} setDeleting={setDeleting} setItemBoolean={setItemBoolean} />
+                        <DeleteButton deleteTodo={deleteTodo} setTodos={setTodos} setShowCardTasks={setShowCardTasks} setUserName={setUserName} setDeleting={setDeleting} setTodoInput={setTodoInput} setItemBoolean={setItemBoolean} />
                     </div>
                 </>))
             : (<div className="deletingRender">Deleting todos and user, please wait...</div>)

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const DeleteButton = ({ deleteTodo, setTodos, setShowCardTasks, setUserName, setItemBoolean, settodoInput, setDeleting }) => {
+const DeleteButton = ({ deleteTodo, setTodos, setShowCardTasks, setUserName, setItemBoolean, setTodoInput, setDeleting }) => {
     const handleDeleteButton = () => {
         setDeleting(true)
         setTimeout(() => {
@@ -9,7 +9,7 @@ const DeleteButton = ({ deleteTodo, setTodos, setShowCardTasks, setUserName, set
             setItemBoolean(false); //correcto
             setTodos([]); //correcto
             setShowCardTasks(false); //correcto
-            settodoInput(''); //correcto
+            setTodoInput(''); //correcto
             setUserName(''); //correcto
         }, 1500)
 

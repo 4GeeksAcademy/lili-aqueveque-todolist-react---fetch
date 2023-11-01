@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const InputName =({ setUserName, setShowCardTasks, postData }) => {
+const InputName = ({ setUserName, setShowCardTasks, postData }) => {
 
     const [value, setValue] = useState('');
 
@@ -19,37 +19,38 @@ const InputName =({ setUserName, setShowCardTasks, postData }) => {
         }
         catch (error) {
             console.log('There is an error', error)
-        }   
+        }
     }
 
 
     return (
         <div className="container-md containerInput">
-            
-            <div>
-                <h1 className="titleInput">This is TodoList Using React!</h1>
-            </div>
-            <div className="labelName">
-                <label for="InputUserName" className='title'>Enter your Username:</label>
-            </div>
 
             <div>
-                <input
-                type="text"
-                id='userNameInput'
-                value={value}
-                onChange={handleInputChange}
-                class='inputName'
-
-                />
-
+                <h1 className="titleInput">TodoList Using React!</h1>
             </div>
+            <div className="username-container">
+                <div className="labelName">
+                    <label for="InputUserName" className='title input-username'>Enter your Username:</label>
+                </div>
 
-            <div>
-                <button type="button" className="btn btn-light name"
-                onClick={handleClickButton}>Submit</button>
+                <div>
+                    <input
+                        type="text"
+                        id='userNameInput'
+                        value={value}
+                        onChange={handleInputChange}
+                        class='inputName'
+
+                    />
+
+                </div>
+
+                <div>
+                    <button type="button" className="btn name purple-button"
+                        onClick={handleClickButton}>Submit</button>
+                </div>
             </div>
-
         </div>
     )
 }
