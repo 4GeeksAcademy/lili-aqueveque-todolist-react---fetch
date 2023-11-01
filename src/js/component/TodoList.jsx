@@ -8,7 +8,7 @@ const TodoList = () => {
     const [userNameRender, setUserName] = useState('');
     const [showCardTasks, setShowCardTasks] = useState(false);
     const [itemBoolean, setItemBoolean] = useState(false);
-
+    const [deleting, setDeleting] = useState(false);
 
 
     let url = 'https://playground.4geeks.com/apis/fake/todos/user/';
