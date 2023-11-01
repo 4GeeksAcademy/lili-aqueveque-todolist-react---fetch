@@ -116,7 +116,30 @@ const TodoList = () => {
         }
     }
 
+    //DELETE
+    const deleteTodo = async () => {
+        try {
+            let userNameAPI = userNameRender;
+            let urlAPI = url + userNameAPI;
+            const responseDel = await fetch(urlAPI, {
+                method: 'DELETE',
+                headers: {
+                    'Content-type': "application/json"
+                },
+            })
+            if (responseDel.ok) { //deletion is successful and response is parsed as JSON and logged to the console
+                const jsonResponseDel = await responseDel.json();
+                console.log(jsonResponseDel);
+            }
+            else {
+                throw new Error('Request failed. Username is not part of the API')
+            }
+        }
 
+        catch (error) {
+            console.log('Deletion request failed', error)
+        }
+    }
 
 
 
